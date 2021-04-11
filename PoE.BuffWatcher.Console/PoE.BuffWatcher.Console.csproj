@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>PoE.BuffWatcher.Console</RootNamespace>
+    <AssemblyName>PoE.BuffWatcher.Console</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PoE.BuffWatcher.Capture\PoE.BuffWatcher.Capture.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PoE.BuffWatcher": {
+      "commandName": "Executable",
+      "executablePath": "D:\\Projects\\PoE-Buff-Watcher\\PoE.BuffWatcher.Console\\bin\\Debug\\net5.0\\PoE.BuffWatcher.Console.exe"
+    }
+  }
+}
