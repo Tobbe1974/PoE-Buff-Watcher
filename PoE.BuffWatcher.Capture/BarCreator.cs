@@ -10,7 +10,7 @@ namespace PoE.BuffWatcher.Capture
     public class BarCreator
     {
         private static int Spacing = 5;
-        public static Image CreateBuffImage(Bitmap sourceImage, List<Rectangle> buffs, double scale = 0.4)
+        public static Image CreateBuffImage(Bitmap sourceImage, List<Rectangle> buffs, double scale = 0.6)
         {
             Color transparentColor = Color.FromArgb(255, Color.LawnGreen);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 
 namespace PoE.BuffWatcher.Capture
@@ -24,6 +25,9 @@ namespace PoE.BuffWatcher.Capture
         private byte ScanColorR = 0x57;
         private byte ScanColorG = 0x41;
         private byte ScanColorB = 0x33;
+
+        private static int LineLength = 5;
+        private static int ColorTolerance = 4;
 
         private readonly Bitmap _bitmap;
         
@@ -65,20 +69,16 @@ namespace PoE.BuffWatcher.Capture
 
         private unsafe Span<uint> GetRowData(int yPos)
         {
-            var time = Stopwatch.StartNew();
             var data = _bitmap.LockBits(new Rectangle(0, yPos, _bitmap.Width, 1), ImageLockMode.ReadOnly, _bitmap.PixelFormat);
             var rowData = new Span<uint>(data.Scan0.ToPointer(), data.Width);
             _bitmap.UnlockBits(data);
 
-            time.Stop();
-            System.Console.WriteLine($"GetRowData took {time.ElapsedMilliseconds}");
             return rowData;
         }
 
 
-        private List<int> FindRightBorders(in Span<uint> rowData)
+        private List<int> FindRightBorders(Span<uint> rowData)
         {
-            var time = Stopwatch.StartNew();
             int lastPosFound = BuffWidth;
             int abortThreshHold = BuffWidth * 2;
             List<int> rightBorders = new List<int>();
@@ -93,9 +93,6 @@ namespace PoE.BuffWatcher.Capture
                 }
             }
 
-            time.Stop();
-            System.Console.WriteLine($"FindRightBorders took {time.ElapsedMilliseconds}");
-
             return rightBorders;
         }
 
@@ -109,7 +106,7 @@ namespace PoE.BuffWatcher.Capture
                 Math.Abs(bytes[1] - ScanColorG) +
                 Math.Abs(bytes[0] - ScanColorB);
 
-            return diff < 5;
+            return diff < ColorTolerance;
         }
 
         private List<Rectangle> CalculateRectangles(int buffStartY, List<int> rightBorders)

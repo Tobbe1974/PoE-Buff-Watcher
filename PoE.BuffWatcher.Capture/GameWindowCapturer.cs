@@ -5,11 +5,11 @@ using PoE.BuffWatcher.Imports;
 
 namespace PoE.BuffWatcher.Capture
 {
-    public class ImageCapture
+    public class GameWindowCapturer
     {
         private readonly WindowHandler _windowHandler;
 
-        public ImageCapture(WindowHandler windowHandler)
+        public GameWindowCapturer(WindowHandler windowHandler)
         {
             _windowHandler = windowHandler;
         }
@@ -23,6 +23,11 @@ namespace PoE.BuffWatcher.Capture
             }
 
             var gameWindowDc = _windowHandler.GetGameWindowDC();
+            if (gameWindowDc == IntPtr.Zero)
+            {
+                return null;
+            }
+
             var windowRect = _windowHandler.GetWindowRect();
             int width = windowRect.Right - windowRect.Left;
             int height = windowRect.Bottom - windowRect.Top;

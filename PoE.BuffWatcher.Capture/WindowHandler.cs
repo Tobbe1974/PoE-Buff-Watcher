@@ -89,5 +89,10 @@ namespace PoE.BuffWatcher.Capture
 
             return windows;
         }
+
+        public void ResetWindow()
+        {
+            _foundWindow = IntPtr.Zero;;
+        }
     }
 }

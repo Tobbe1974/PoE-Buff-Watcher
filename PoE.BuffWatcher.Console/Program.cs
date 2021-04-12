@@ -12,7 +12,7 @@ namespace PoE.BuffWatcher.Console
             string windowName = "Path Of Exile";
 
             var windowHandler = new WindowHandler(windowName);
-            var imageCapture = new ImageCapture(windowHandler);
+            var imageCapture = new GameWindowCapturer(windowHandler);
 
             var image = imageCapture.GetBitmapFromGameWindow();
 

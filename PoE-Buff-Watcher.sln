@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoE.BuffWatcher.Console", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoE.BuffWatcher.Imports", "PoE.BuffWatcher.Imports\PoE.BuffWatcher.Imports.csproj", "{CFBD4487-59BE-4D54-AF73-DE18AAFAB22A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoE.BuffWatcher.WPF", "PoE.BuffWatcher.WPF\PoE.BuffWatcher.WPF.csproj", "{21C49D1E-065A-475C-BE8D-39FCAE1B9F0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CFBD4487-59BE-4D54-AF73-DE18AAFAB22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFBD4487-59BE-4D54-AF73-DE18AAFAB22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFBD4487-59BE-4D54-AF73-DE18AAFAB22A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21C49D1E-065A-475C-BE8D-39FCAE1B9F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21C49D1E-065A-475C-BE8D-39FCAE1B9F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21C49D1E-065A-475C-BE8D-39FCAE1B9F0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21C49D1E-065A-475C-BE8D-39FCAE1B9F0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
