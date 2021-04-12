@@ -73,11 +73,21 @@ namespace PoE.BuffWatcher.Capture
 
             User32.EnumWindows(delegate (IntPtr hWnd, int lParam)
             {
-                if (hWnd == shellWindow) return true;
-                if (!User32.IsWindowVisible(hWnd)) return true;
+                if (hWnd == shellWindow)
+                {
+                    return true;
+                }
+
+                if (!User32.IsWindowVisible(hWnd))
+                {
+                    return true;
+                }
 
                 int length = User32.GetWindowTextLength(hWnd);
-                if (length == 0) return true;
+                if (length == 0)
+                {
+                    return true;
+                }
 
                 StringBuilder builder = new StringBuilder(length);
                 User32.GetWindowText(hWnd, builder, length + 1);

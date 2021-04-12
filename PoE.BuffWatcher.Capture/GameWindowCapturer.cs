@@ -25,6 +25,7 @@ namespace PoE.BuffWatcher.Capture
             var gameWindowDc = _windowHandler.GetGameWindowDC();
             if (gameWindowDc == IntPtr.Zero)
             {
+                _windowHandler.ResetWindow();
                 return null;
             }
 
@@ -66,7 +67,6 @@ namespace PoE.BuffWatcher.Capture
 
             return image;
         }
-
     }
 }
 

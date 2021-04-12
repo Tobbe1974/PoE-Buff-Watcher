@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -62,13 +61,14 @@ namespace PoE.BuffWatcher.WPF
                     var source = ConvertToImageSource(debuffs);
                     PositionWindow(debuffs);
                     DebuffImage.Source = source;
-                }
-                else
-                {
-                    DebuffImage.Width = 0;
-                    DebuffImage.Height = 0;
+                    debuffs.Dispose();
+                    return;
                 }
             }
+
+            // Set to 0 size if we don't have anything to show
+            DebuffImage.Width = 0;
+            DebuffImage.Height = 0;
         }
 
         private void PositionWindow(Image debuffs)
