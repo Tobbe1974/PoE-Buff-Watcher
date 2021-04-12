@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using PoE.BuffWatcher.Capture.Structs;
 
-namespace PoE.BuffWatcher.Capture.Imports
+namespace PoE.BuffWatcher.Imports
 {
     public class User32
     {

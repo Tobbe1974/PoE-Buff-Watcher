@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Text;
-using PoE.BuffWatcher.Capture.Imports;
-using PoE.BuffWatcher.Capture.Structs;
+using PoE.BuffWatcher.Imports;
 
 namespace PoE.BuffWatcher.Capture
 {

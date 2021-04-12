@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace PoE.BuffWatcher.Capture.Imports
+namespace PoE.BuffWatcher.Imports
 {
     public class GDI32
     {

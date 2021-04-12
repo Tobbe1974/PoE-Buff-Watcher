@@ -1,8 +1,9 @@
-﻿using System;
-using System.Threading;
+﻿using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 using PoE.BuffWatcher.Capture;
 
-namespace PoE_Buff_Watcher
+namespace PoE.BuffWatcher.Console
 {
     class Program
     {
@@ -13,14 +14,27 @@ namespace PoE_Buff_Watcher
             var windowHandler = new WindowHandler(windowName);
             var imageCapture = new ImageCapture(windowHandler);
 
+            var image = imageCapture.GetBitmapFromGameWindow();
 
-            while (true)
-            {
-                Thread.Sleep(500);
-                string filename = $"D:\\PoE\\{DateTime.Now.Ticks}.bmp";
+            var bars = ReadImage(image);
 
-                imageCapture.SaveScreenShot(filename);
-            }
+            bars.Item1?.Save(@"D:\poe\bars\buff.bmp", ImageFormat.Bmp);
+            bars.Item2?.Save(@"D:\poe\bars\debuff.bmp", ImageFormat.Bmp);
+
+            bars.Item1?.Dispose();
+            bars.Item2?.Dispose();
+        }
+
+        private static (Image, Image) ReadImage(Image image)
+        {
+            var time = Stopwatch.StartNew();
+            using var imageScanner = new ImageScanner(image);
+            var buffs = imageScanner.FindBuffs();
+            var debuffs = imageScanner.FindDebuffs();
+
+            time.Stop();
+
+            return (buffs, debuffs);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using PoE.BuffWatcher.Capture.Imports;
+using PoE.BuffWatcher.Imports;
 
 namespace PoE.BuffWatcher.Capture
 {
@@ -34,7 +34,7 @@ namespace PoE.BuffWatcher.Capture
             GDI32.SelectObject(hdcDest, hOld);
             GDI32.DeleteDC(hdcDest);
             User32.ReleaseDC(gameWindow, gameWindowDc);
-            
+
             Image image = Image.FromHbitmap(hBitmap);
             GDI32.DeleteObject(hBitmap);
 
@@ -45,15 +45,23 @@ namespace PoE.BuffWatcher.Capture
         {
             format ??= ImageFormat.Bmp;
 
-            var bitmap = GetBitmapFromGameWindow();
-            if (bitmap == null)
+            var image = GetBitmapFromGameWindow();
+            if (image == null)
             {
                 Console.WriteLine("Unable to find game window");
                 return;
             }
 
-            bitmap.Save(fileName, format);
+            image.Save(fileName, format);
         }
+
+        public Image LoadScreenShot(string fileName)
+        {
+            var image = Image.FromFile(fileName);
+
+            return image;
+        }
+
     }
 }
 
