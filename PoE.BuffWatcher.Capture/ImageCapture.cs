@@ -45,15 +45,23 @@ namespace PoE.BuffWatcher.Capture
         {
             format ??= ImageFormat.Bmp;
 
-            var bitmap = GetBitmapFromGameWindow();
-            if (bitmap == null)
+            var image = GetBitmapFromGameWindow();
+            if (image == null)
             {
                 Console.WriteLine("Unable to find game window");
                 return;
             }
 
-            bitmap.Save(fileName, format);
+            image.Save(fileName, format);
         }
+
+        public Image LoadScreenShot(string fileName)
+        {
+            var image = Image.FromFile(fileName);
+
+            return image;
+        }
+        
     }
 }
 

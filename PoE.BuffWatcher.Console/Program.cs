@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.Threading;
 using PoE.BuffWatcher.Capture;
+using PoE.BuffWatcher.Scanner;
 
-namespace PoE_Buff_Watcher
+namespace PoE.BuffWatcher.Console
 {
     class Program
     {
@@ -13,14 +16,27 @@ namespace PoE_Buff_Watcher
             var windowHandler = new WindowHandler(windowName);
             var imageCapture = new ImageCapture(windowHandler);
 
+            
 
             while (true)
             {
-                Thread.Sleep(500);
-                string filename = $"D:\\PoE\\{DateTime.Now.Ticks}.bmp";
+                Thread.Sleep(400);
+                var image = imageCapture.GetBitmapFromGameWindow();
 
-                imageCapture.SaveScreenShot(filename);
+                ReadImage(image);
             }
+        }
+
+        private static void ReadImage(Image image)
+        {
+            var time = Stopwatch.StartNew();
+            var imageScanner = new ImageScanner(image);
+            var buffs = imageScanner.FindBuffs();
+            var debuffs = imageScanner.FindDebuffs();
+
+            time.Stop();
+
+            System.Console.WriteLine($"Found {buffs.Count} buffs and {debuffs.Count} in {time.ElapsedMilliseconds}");
         }
     }
 }
