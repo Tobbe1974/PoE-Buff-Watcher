@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace PoE.BuffWatcher.Capture.Structs
+namespace PoE.BuffWatcher.Imports
 {
 
     [StructLayout(LayoutKind.Sequential)]

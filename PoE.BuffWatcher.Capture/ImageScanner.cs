@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 
-namespace PoE.BuffWatcher.Scanner
+namespace PoE.BuffWatcher.Capture
 {
     public class ImageScanner : IDisposable
     {

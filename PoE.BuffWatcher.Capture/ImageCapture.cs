@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using PoE.BuffWatcher.Capture.Imports;
+using PoE.BuffWatcher.Imports;
 
 namespace PoE.BuffWatcher.Capture
 {
@@ -34,7 +34,7 @@ namespace PoE.BuffWatcher.Capture
             GDI32.SelectObject(hdcDest, hOld);
             GDI32.DeleteDC(hdcDest);
             User32.ReleaseDC(gameWindow, gameWindowDc);
-            
+
             Image image = Image.FromHbitmap(hBitmap);
             GDI32.DeleteObject(hBitmap);
 
@@ -61,7 +61,7 @@ namespace PoE.BuffWatcher.Capture
 
             return image;
         }
-        
+
     }
 }
 

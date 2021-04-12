@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PoE.BuffWatcher.Capture\PoE.BuffWatcher.Capture.csproj" />
-    <ProjectReference Include="..\PoE.BuffWatcher.Scanner\PoE.BuffWatcher.Scanner.csproj" />
   </ItemGroup>
 
 </Project>
